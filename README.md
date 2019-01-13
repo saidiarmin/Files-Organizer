@@ -1,2 +1,2 @@
 # Files-Organizer
-This simple Windows Form organizer will get the JPG files and put them in another folder based on their modified date.
+This simple Windows Form organizer will get the JPG files and move them to another folder based on their modified date.
