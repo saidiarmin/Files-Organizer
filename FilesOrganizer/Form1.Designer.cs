@@ -46,16 +46,14 @@
             this.label1.Size = new System.Drawing.Size(348, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Choose a folder to organize photos";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // txtSourceFolder
             // 
             this.txtSourceFolder.Location = new System.Drawing.Point(48, 98);
             this.txtSourceFolder.Name = "txtSourceFolder";
-            this.txtSourceFolder.ReadOnly = true;
             this.txtSourceFolder.Size = new System.Drawing.Size(862, 31);
             this.txtSourceFolder.TabIndex = 1;
-            this.txtSourceFolder.TabStop = false;
             // 
             // btnOrganizer
             // 
@@ -65,7 +63,7 @@
             this.btnOrganizer.TabIndex = 3;
             this.btnOrganizer.Text = "Organize";
             this.btnOrganizer.UseVisualStyleBackColor = true;
-            this.btnOrganizer.Click += new System.EventHandler(this.btnOrganizer_Click);
+            this.btnOrganizer.Click += new System.EventHandler(this.BtnOrganizer_Click);
             // 
             // lblError
             // 
@@ -97,11 +95,11 @@
             this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Reset Form";
             this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
+            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.FolderBrowserDialog1_HelpRequest);
             // 
             // btnBrowse
             // 
@@ -111,7 +109,7 @@
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
             // 
             // Form1
             // 
