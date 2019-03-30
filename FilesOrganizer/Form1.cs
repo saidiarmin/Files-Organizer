@@ -1,6 +1,9 @@
 ﻿using FilesOrganizer.Services;
 using System;
+using System.Drawing;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FilesOrganizer
@@ -33,8 +36,9 @@ namespace FilesOrganizer
                     var fileExtension = file.Substring(file.LastIndexOf(".") + 1);
                     if (Helper.IsValidExtension(fileExtension))
                     {
-                        var modifiedDate = File.GetLastWriteTime(file).ToString("yyyy_MM_dd");
-                        var destinationFolderPath = $"{folderPath}\\{modifiedDate}\\";
+                        var dateTaken = GetDateTakenFromImage(file) ?? File.GetLastWriteTime(file);
+                   
+                        var destinationFolderPath = $"{folderPath}\\{dateTaken.ToString("yyyy_MM_dd")}\\";
                         var destinationFilePath = destinationFolderPath + file.Substring(file.LastIndexOf("\\") + 1);
 
                         if (!Directory.Exists(destinationFolderPath))
@@ -98,7 +102,25 @@ namespace FilesOrganizer
             lblSuccess.Text = successMsg;
             lblSuccess.Visible = true;
         }
-        
+        private DateTime? GetDateTakenFromImage(string path)
+        {
+            try
+            {
+                var r = new Regex(":");
+                using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                using (var myImage = Image.FromStream(fs, false, false))
+                {
+                    var propItem = myImage.GetPropertyItem(36867);
+                    var dateTaken = r.Replace(Encoding.UTF8.GetString(propItem.Value), "-", 2);
+                    return DateTime.Parse(dateTaken);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         #endregion
 
     }
